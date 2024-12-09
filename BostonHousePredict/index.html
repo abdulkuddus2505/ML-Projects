@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MV Prediction</title>
+</head>
+<body>
+    <h1>MV Prediction</h1>
+    <form method="POST">
+        {% for feature in df_encoded.drop('MV', axis=1).columns %}
+            <label for="{{ feature }}">{{ feature }}:</label>
+            <input type="number" name="{{ feature }}" id="{{ feature }}" required><br>
+        {% endfor %}
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+        <h2>Predicted MV: {{ prediction }}</h2>
+    {% endif %}
+</body>
+</html>
